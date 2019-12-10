@@ -1,3 +1,4 @@
+import exception.EmptyExpressionException;
 import exception.NotCorrectSymbolException;
 import exception.UnknownExpressionException;
 import service.CalculationService;
@@ -6,7 +7,7 @@ import service.ParseService;
 import service.ValidationService;
 
 public class Main {
-    public static void main(String[] args) throws NotCorrectSymbolException, UnknownExpressionException {
+    public static void main(String[] args) throws NotCorrectSymbolException, UnknownExpressionException, EmptyExpressionException {
         ConsoleService consoleService = new ConsoleService();
         ValidationService validationService = new ValidationService();
         ParseService parseService = new ParseService();

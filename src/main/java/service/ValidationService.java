@@ -1,12 +1,17 @@
 package service;
 
+import exception.EmptyExpressionException;
 import exception.NotCorrectSymbolException;
 import exception.UnknownExpressionException;
 
 public class ValidationService {
-    public String[] useAllValidations(String expression) throws NotCorrectSymbolException, UnknownExpressionException {
+    public String[] useAllValidations(String expression) throws NotCorrectSymbolException, UnknownExpressionException, EmptyExpressionException {
+        if (expression.trim().equals("")) {
+            throw new EmptyExpressionException("\n\nВведена пустая строка!\n");
+        }
         String[] elements = splitString(expression.trim());
         if (hasUnknownSymbol(expression)) {
+            System.out.println(elements.length);
             throw new NotCorrectSymbolException("\n\nВыражение содержит недопустимые символы!\n");
         } else if (!hasOnlyNumbersAndArithmeticOperations(elements)) {
             throw new UnknownExpressionException("\n\nВыражение содержит некорректные числа или арифметические операции! " +
