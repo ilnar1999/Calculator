@@ -25,6 +25,9 @@ public class CalculationService {
                 } else if (currentElement.equals("*")) {
                     elementsAsStack.push(firstOperand * secondOperand);
                 } else {
+                    if (secondOperand == 0) {
+                        throw new IllegalArgumentException("\n\nНа ноль делить нельзя!\n");
+                    }
                     elementsAsStack.push(firstOperand / secondOperand);
                 }
             }
