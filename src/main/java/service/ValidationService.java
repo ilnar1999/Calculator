@@ -15,8 +15,7 @@ public class ValidationService {
             throw new NotCorrectSymbolException("\n\nВыражение содержит недопустимые символы!\n");
         } else if (!hasOnlyNumbersAndArithmeticOperations(elements)) {
             throw new UnknownExpressionException("\n\nВыражение содержит некорректные числа или арифметические операции! " +
-                    "Убедитесь, что числа и арифметические операции разделены пробелами, " +
-                    "а в дробных числах используется \".\", а не \",\"!\n");
+                    "Убедитесь, что числа и арифметические операции разделены пробелами!\n");
         } else if (hasArithmeticOperationInFirstOrLastPosition(elements)) {
             throw new UnknownExpressionException("\n\nАрифметические операции не могут быть расположены в начале " +
                     "или в конце выражения!\n");

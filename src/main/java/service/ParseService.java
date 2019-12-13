@@ -1,30 +1,29 @@
 package service;
 
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
 public class ParseService {
-    public Queue<String> parseExpression(String[] elements) {
-        Stack<String> arithmeticOperations = new Stack<String>();
-        Queue<String> elementsInReversPolishNotation = new LinkedList<String>();
+    public String[] parseExpression(String[] elements) {
+        int position = 0;
+        Stack<String> arithmeticOperations = new Stack<>();
+        String[] elementsInReversPolishNotation = new String[elements.length];
         for (String element: elements) {
             try {
                 Double.parseDouble(element);
-                elementsInReversPolishNotation.offer(element);
+                elementsInReversPolishNotation[position++] = element;
             } catch (NumberFormatException e) {
                 if (arithmeticOperations.isEmpty()) {
                     arithmeticOperations.push(element);
                 } else if (hasHigherPriority(arithmeticOperations.peek(),element)){
                     arithmeticOperations.push(element);
                 } else {
-                    elementsInReversPolishNotation.offer(arithmeticOperations.pop());
+                    elementsInReversPolishNotation[position++] = (arithmeticOperations.pop());
                     arithmeticOperations.push(element);
                 }
             }
         }
         while (!arithmeticOperations.isEmpty()) {
-            elementsInReversPolishNotation.offer(arithmeticOperations.pop());
+            elementsInReversPolishNotation[position++] = arithmeticOperations.pop();
         }
         return elementsInReversPolishNotation;
     }

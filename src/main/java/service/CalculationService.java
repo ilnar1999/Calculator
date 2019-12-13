@@ -1,17 +1,16 @@
 package service;
 
-import java.util.Queue;
 import java.util.Stack;
 
 public class CalculationService {
-    public double getAnswer(Queue<String> elementsAsQueue) {
-        Stack<Double> elementsAsStack = new Stack<Double>();
+    public double getAnswer(String[] elementsAsArray) {
+        Stack<Double> elementsAsStack = new Stack<>();
         String currentElement;
         double firstOperand;
         double secondOperand;
 
-        while (!elementsAsQueue.isEmpty()) {
-            currentElement = elementsAsQueue.poll();
+        for (String element: elementsAsArray){
+            currentElement = element;
             try {
                 Double.parseDouble(currentElement);
                 elementsAsStack.push(Double.parseDouble(currentElement));
