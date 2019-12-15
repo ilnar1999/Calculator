@@ -1,12 +1,18 @@
 package service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculationServiceTest {
-    CalculationService calculationService = new CalculationService();
+    private CalculationService calculationService;
+
+    @BeforeEach
+    void setUp() {
+        calculationService = new CalculationService();
+    }
 
     @Test
     @DisplayName("Целые числа")

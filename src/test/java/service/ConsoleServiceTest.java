@@ -1,12 +1,18 @@
 package service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ConsoleServiceTest {
-    ConsoleService consoleService = new ConsoleService();
+    private ConsoleService consoleService;
+
+    @BeforeEach
+    void setUp() {
+        consoleService = new ConsoleService();
+    }
 
     @Test
     @DisplayName("Округление целого числа")

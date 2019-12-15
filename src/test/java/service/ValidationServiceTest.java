@@ -3,13 +3,19 @@ package service;
 import exception.EmptyExpressionException;
 import exception.NotCorrectSymbolException;
 import exception.UnknownExpressionException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ValidationServiceTest {
-    ValidationService validationService = new ValidationService();
+    private ValidationService validationService;
+
+    @BeforeEach
+    void setUp() {
+        validationService = new ValidationService();
+    }
 
     @Test
     @DisplayName("Ввод корректного выражения")
