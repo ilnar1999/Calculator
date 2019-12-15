@@ -47,6 +47,17 @@ class ValidationServiceTest {
     }
 
     @Test
+    @DisplayName("Ввод выражения с двумя арифметическими операциями подряд")
+    void enterTwoArithmeticOperationsConsecutively() throws NotCorrectSymbolException, EmptyExpressionException {
+        try {
+            validationService.useAllValidations("10 - + 3");
+        } catch (UnknownExpressionException e) {
+            assertEquals(e.getMessage(),"\n\nВ выражении не должно быть подряд идущих чисел " +
+                    "или арифметических операций!\n");
+        }
+    }
+
+    @Test
     @DisplayName("Ввод выражения без разделения элементов")
     void enterExpressionWithoutDelimiters123() throws NotCorrectSymbolException, EmptyExpressionException {
         try {
